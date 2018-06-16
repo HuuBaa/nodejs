@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="name">
+<br>
+<span id="name2"></span>
+
+</body>
+<script>
+    var obj={};
+    Object.defineProperty(obj,"name",{
+        set:function (val) {
+            document.getElementById("name").value=val;
+            document.getElementById("name2").innerText=val;
+        },
+        get:function () {
+
+        }
+    });
+    document.getElementById("name").addEventListener("keyup",(event)=>{
+        obj.name=event.target.value;
+    })
+
+</script>
+</html>
