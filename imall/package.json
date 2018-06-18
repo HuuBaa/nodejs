@@ -1,7 +1,7 @@
 {
-  "name": "imoocmall",
+  "name": "imall",
   "version": "1.0.0",
-  "description": "Imooc Mall",
+  "description": "A Vue.js project",
   "author": "Huu",
   "private": true,
   "scripts": {
@@ -12,7 +12,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "vue": "^2.5.2",
-    "vue-resource": "^1.5.1",
+    "vue-infinite-scroll": "^2.0.2",
+    "vue-lazyload": "^1.2.6",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

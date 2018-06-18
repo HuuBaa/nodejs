@@ -1,0 +1,24 @@
+{
+  "status":0,
+  "msg":"",
+  "result":[
+    {
+      "productId":"100001",
+      "produceName":"小米6",
+      "productPrice":199,
+      "productImg":"1.jpg"
+    },
+    {
+      "productId":"100001",
+      "produceName":"yy",
+      "productPrice":2499,
+      "productImg":"2.jpg"
+    },
+    {
+      "productId":"100001",
+      "produceName":"xx",
+      "productPrice":299,
+      "productImg":"3.jpg"
+    }
+  ]
+}

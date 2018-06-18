@@ -3,12 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import {sum,minus}  from "./util";
-//
-// console.log(`sum=${sum(1,2)},minus=${minus(1,2)}`);
+import VueLazyLoad from 'vue-lazyload'
+import infiniteScroll from 'vue-infinite-scroll'
+
+Vue.use(infiniteScroll);
+Vue.use(VueLazyLoad,{
+  loading:"/static/loading-svg/loadings-bars.svg"
+});
 
 Vue.config.productionTip = false;
-
+Vue.config.devtools = true;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6-2DEMO</title>
+</head>
+<body>
+<script>
+  function sum(sum,...rest) {
+    console.log(`sum=${sum}`);
+    for(let i of rest){
+      console.log(`${i}`);
+      sum+=i;
+    }
+    console.log(`sum=${sum}`);
+  }
+  sum(200,3,45,6);
+
+
+  let sum3=(...rest)=>{
+    let sum=10;
+    console.log(`sum3=${sum}`);
+    for(let i of rest){
+      console.log(`${i}`);
+      sum+=i;
+    }
+    console.log(`sum3=${sum}`);
+  };
+  sum3(200,3,45,6);
+
+
+  let [x,y]=[4,8];
+  console.log(...[4,8]);
+
+  arr1=[111,22];
+  arr2=[22.33,21];
+  console.log(...[...arr1,...arr2]);
+
+  let [a,b,c]="Es6";
+
+  let xy=[..."es6"];
+
+
+</script>
+</body>
+</html>

@@ -80,35 +80,18 @@
         </a>
       </li>
     </ul>
-    <Counter v-bind:num="num" v-on:incre="increment" v-on:descre="descrement"></Counter>
-    <p>parent:{{num}}</p>
   </div>
-
 </template>
 
 <script>
-import Counter from './Counter'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      num:10
-    }
-  },
-  components:{
-    Counter
-  },
-  methods:{
-    increment(){
-      this.num++;
-    },
-    descrement(){
-      this.num--;
+      msg: 'Welcome to Your Vue.js App'
     }
   }
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
