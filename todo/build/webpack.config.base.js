@@ -12,12 +12,12 @@ const config = {
 	},
 	module: {//webpack的模组
 		rules: [//各种文件的引用规则在这里，webpack单独只能理解js文件，其他的文件全部要不同的loader来帮助webpack解析
-      {//每次保存，进行自动eslint检查
-        test: /\.(vue|js|jsx)$/,
-        loader: 'eslint-loader',
-        exclude:'/node_modules/',
-        enforce:'pre' //预处理，优先下面的loader之前处理
-      },
+      // {//每次保存，进行自动eslint检查
+      //   test: /\.(vue|js|jsx)$/,
+      //   loader: 'eslint-loader',
+      //   exclude:'/node_modules/',
+      //   enforce:'pre' //预处理，优先下面的loader之前处理
+      // },
       {
 				test: /\.vue$/,//匹配符合当前正则的文件
         loader: 'vue-loader',//由这个loader解析为webpack能明白的js代码

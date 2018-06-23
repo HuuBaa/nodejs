@@ -25,14 +25,14 @@ if (isDev) {
           test: /\.styl/,
           use: [
             'vue-style-loader',
-            'css-loader',
-            // {
-            //   loader:'css-loader',
-            //   options:{
-            //     module:true, //开启cssmodule 具体看 /client/layout/footer.jsx
-            //     localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]'
-            //   }
-            // },
+            // 'css-loader',
+            {
+              loader:'css-loader',
+              options:{
+                module:true, //开启cssmodule 具体看 /client/layout/footer.jsx
+                localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]'
+              }
+            },
             {
               loader: 'postcss-loader',
               options: {
