@@ -8,7 +8,8 @@ const config = {
 	entry:path.join(__dirname, '../client/index.js'),//入口文件
 	output: {
 		filename: 'bundle.[hash:8].js',//设置出口文件的文件名
-		path: path.join(__dirname, '../dist')//设置出口文件的路径
+    path: path.join(__dirname, '../dist'),//设置出口文件的路径
+    publicPath:'/public/'
 	},
 	module: {//webpack的模组
 		rules: [//各种文件的引用规则在这里，webpack单独只能理解js文件，其他的文件全部要不同的loader来帮助webpack解析

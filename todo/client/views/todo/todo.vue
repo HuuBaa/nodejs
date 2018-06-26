@@ -1,6 +1,6 @@
 <template>
   <section class="real-app">
-    <input 
+    <input
       type="text"
       class="add-input"
       autofocus="autofocus"
@@ -13,12 +13,13 @@
       :key="todo.id"
       @del="deleteTdodo"
     />
-    <Tabs 
-    :filter="filter" 
+    <Tabs
+    :filter="filter"
     :todos="todos"
     @toggle="toggleFilter"
     @clearAllCompleted="clearAllCompleted"
     ></Tabs>
+    <!-- <router-view></router-view> -->
   </section>
 </template>
 
@@ -27,12 +28,40 @@ import Item from './item.vue'
 import Tabs from './tabs.vue'
 let id = 0
 
+// beforeEach
+// routes beforeEnter
+// Todo beforeRouteEnter
+// beforeResolve
+// afterEach
+// Todo mounted
+
 export default {
+  beforeRouteEnter (to, from, next) {
+    console.log('Todo beforeRouteEnter')
+    next(vm=>{ //vm为本组件的vue实例
+      console.log(vm)
+    })
+  },
+  beforeRouterUpdate(to, from, next) { //同一个组件在不同的路由下跳转 mounted不会触发，可以使用该方法
+    console.log('Todo befotRouterUpdate')
+    next()
+  },
+  beforeRouteLeave (to, from, next) {
+    console.log('Todo beforeRouteLeave')
+    // if(global.confirm('are you sure')){ //离开前的确认
+    //   next()
+    // }
+    next()
+  },
   data () {
     return {
       todos: [],
       filter: 'all'
     }
+  },
+  props:['id'],
+  mounted() {
+    console.log("Todo mounted")
   },
   components: {
     Item,
@@ -72,7 +101,7 @@ export default {
 <style lang="stylus" scoped>
 .real-app{
   width 600px
-  margin 0 auto 
+  margin 0 auto
   box-shadow 0 0 5px #666
   }
   .add-input{

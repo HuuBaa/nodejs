@@ -1,2 +1,3 @@
-//import './data-binding'
-import './computed'
+// import './data-binding'
+// import './computed'
+import './components'

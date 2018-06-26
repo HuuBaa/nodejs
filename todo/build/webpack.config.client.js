@@ -14,7 +14,9 @@ const defaultPlugins= [//webpack的插件
 				NODE_ENV: isDev ? '"development"' : '"production"'//
 			}
 		}),
-		new HTMLPlugin()//插件的基本作用就是生成html文件
+		new HTMLPlugin({
+      template:path.join(__dirname,'./template.html')
+    })//插件的基本作用就是生成html文件
 	]
 
 if (isDev) {
@@ -25,14 +27,14 @@ if (isDev) {
           test: /\.styl/,
           use: [
             'vue-style-loader',
-            // 'css-loader',
-            {
-              loader:'css-loader',
-              options:{
-                module:true, //开启cssmodule 具体看 /client/layout/footer.jsx
-                localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]'
-              }
-            },
+             'css-loader',
+            // {
+            //   loader:'css-loader',
+            //   options:{
+            //     module:true, //开启cssmodule 具体看 /client/layout/footer.jsx
+            //     localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]'
+            //   }
+            // },
             {
               loader: 'postcss-loader',
               options: {
@@ -50,7 +52,11 @@ if (isDev) {
 			host: '0.0.0.0',//webpack-dev-server 的端口号
 			overlay: {
 				errors: true//有错误时回显示在终端上
-			},
+      },
+      //解决手动刷新页面无法访问
+      historyApiFallback:{
+        index:'/public/index.html'
+      },
 			hot: true//热模块替换(HMR)/热更新 是否开启
     },
     plugins:defaultPlugins.concat([

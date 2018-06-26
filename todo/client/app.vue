@@ -2,7 +2,11 @@
     <div id="app">
       <div id="cover"></div>
       <Header></Header>
-      <Todo></Todo>
+      <router-link to="/app">app</router-link>
+      <router-link :to="{name:'login'}">login</router-link>
+      <transition :name="transitionName" mode="out-in">
+        <router-view />
+      </transition>
       <Footer></Footer>
     </div>
 </template>
@@ -15,8 +19,11 @@ import Todo from './views/todo/todo.vue'
 export default {
   data () {
     return {
-
+      transitionName:'fade'
     }
+  },
+  mounted() {
+    console.log(this.$route)
   },
   components: {
     Header,
