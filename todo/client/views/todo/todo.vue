@@ -39,7 +39,7 @@ export default {
   beforeRouteEnter (to, from, next) {
     console.log('Todo beforeRouteEnter')
     next(vm=>{ //vm为本组件的vue实例
-      console.log(vm)
+      //console.log(vm)
     })
   },
   beforeRouterUpdate(to, from, next) { //同一个组件在不同的路由下跳转 mounted不会触发，可以使用该方法

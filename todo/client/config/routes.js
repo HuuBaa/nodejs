@@ -1,5 +1,5 @@
-import Todo from './../views/todo/todo.vue'
-import Login from './../views/login/login.vue'
+//import Todo from './../views/todo/todo.vue'
+//import Login from './../views/login/login.vue'
 
 export default [
   {
@@ -16,7 +16,7 @@ export default [
     // },
     // props:(route)=>({id:route.query.b}),
 
-    component:Todo,
+    component:()=>import('./../views/todo/todo.vue'), //异步加载，进入路径时才加载
     name:'app', //在router-link里可以使用
     beforeEnter: (to, from, next) => {
       console.log('routes beforeEnter')
@@ -38,7 +38,7 @@ export default [
   },
   {
     path:'/login',
-    component:Login,
+    component:()=>import('./../views/login/login.vue'),
     name:'login'
   }
 ]
