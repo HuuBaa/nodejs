@@ -13,6 +13,7 @@
     "precommit":"cnpm run lint-fix",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js"
   },
+
   "author": "",
   "license": "ISC",
   "dependencies": {
