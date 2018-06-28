@@ -22,30 +22,30 @@ import {
 
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
-//import Todo from './views/todo/todo.vue'
+// import Todo from './views/todo/todo.vue'
 
 export default {
   data () {
     return {
-      transitionName:'fade'
+      transitionName: 'fade'
     }
   },
-  methods:{
+  methods: {
     ...mapActions(['updateCountSync']),
     ...mapMutations(['updateCount'])
   },
-  computed:{
-    //...mapState(['count']), //vuex同名属性
+  computed: {
+    // ...mapState(['count']), //vuex同名属性
     ...mapState({
-      //counter:'count' // 本组件中变量名 ：vuex变量名
-      counter:(state)=>state.count,
-      //使用a模块的state
-      //texta:(state)=>state.a.text
+      // counter:'count' // 本组件中变量名 ：vuex变量名
+      counter: (state) => state.count
+      // 使用a模块的state
+      // texta:(state)=>state.a.text
     }),
 
     ...mapGetters({
-      'fullName':'fullName', // 本组件中变量名 ：vuex变量名
-      'textPlus':'a/textPlus'
+      'fullName': 'fullName', // 本组件中变量名 ：vuex变量名
+      'textPlus': 'a/textPlus'
     })
 
     // count(){
@@ -56,26 +56,25 @@ export default {
     //   return this.$store.getters.fullName
     // }
 
-    //vuex模块的使用
+    // vuex模块的使用
     // ,texta(){
     //   return this.$store.state.b.text
     // }
 
-
   },
-  mounted() {
-    //console.log(this.$route)
+  mounted () {
+    // console.log(this.$route)
     console.log(this.$store)
 
-    //使用了vuex的命名空间
-    //this['a/updateText']('123')
+    // 使用了vuex的命名空间
+    // this['a/updateText']('123')
 
-    //this['a/add']({addtext:'addtext'})
-    //this['b/testAction']()
+    // this['a/add']({addtext:'addtext'})
+    // this['b/testAction']()
 
     this.updateCountSync({
-      num:5,
-      time:1000
+      num: 5,
+      time: 1000
     })
 
     // let i=1;
@@ -83,12 +82,12 @@ export default {
     //   this.updateCount(i++)
     // },1000)
 
-    //触发actions
+    // 触发actions
     // this.$store.dispatch('updateCountSync',{
     //     num:5,time:2000
     //   })
 
-    //触发mutation
+    // 触发mutation
     // let i=1
     // setInterval(()=>{
     //   this.$store.commit('updateCount',i++)
@@ -96,8 +95,8 @@ export default {
   },
   components: {
     Header,
-    Footer,
-    //Todo
+    Footer
+    // Todo
   }
 }
 </script>

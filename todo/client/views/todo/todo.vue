@@ -38,11 +38,11 @@ let id = 0
 export default {
   beforeRouteEnter (to, from, next) {
     console.log('Todo beforeRouteEnter')
-    next(vm=>{ //vm为本组件的vue实例
-      //console.log(vm)
+    next(vm => { // vm为本组件的vue实例
+      // console.log(vm)
     })
   },
-  beforeRouterUpdate(to, from, next) { //同一个组件在不同的路由下跳转 mounted不会触发，可以使用该方法
+  beforeRouterUpdate (to, from, next) { // 同一个组件在不同的路由下跳转 mounted不会触发，可以使用该方法
     console.log('Todo befotRouterUpdate')
     next()
   },
@@ -59,9 +59,9 @@ export default {
       filter: 'all'
     }
   },
-  props:['id'],
-  mounted() {
-    console.log("Todo mounted")
+  props: ['id'],
+  mounted () {
+    console.log('Todo mounted')
   },
   components: {
     Item,

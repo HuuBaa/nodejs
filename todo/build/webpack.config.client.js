@@ -3,6 +3,7 @@ const HTMLPlugin = require('html-webpack-plugin')//插件的基本作用就是�
 const webpack = require('webpack')//引入webpack
 const ExtractPlugin = require('extract-text-webpack-plugin')//该插件的主要是为了抽离css样式,防止将样式打包在js中引起页面样式加载错乱
 const merge=require('webpack-merge')
+const VueClientPlugin=require('vue-server-renderer/client-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'//通过"build":"cross-env NODE_ENV=production webpack --config webpack.config.js",即代码中的NODE_ENV判断当前模式是开发还是产品
 const baseConfig=require('./webpack.config.base.js')
@@ -16,7 +17,8 @@ const defaultPlugins= [//webpack的插件
 		}),
 		new HTMLPlugin({
       template:path.join(__dirname,'./template.html')
-    })//插件的基本作用就是生成html文件
+    }),//插件的基本作用就是生成html文件
+    new VueClientPlugin()//生成ssr需要的client.js文件
 	]
 
 if (isDev) {

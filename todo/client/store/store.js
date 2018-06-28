@@ -6,15 +6,15 @@ import actions from './actions/actions.js'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-export default ()=>{
-  const store=new Vuex.Store({
-    strict:isDev,//只能在开发环境使用，限制state在mutation之外的修改
-    state:defaultState, //数据
-    getters, //和computed类似
-    mutations, //修改state的操作
-    actions, //异步操作
-    plugins:[
-      (store)=>{
+export default () => {
+  const store = new Vuex.Store({
+    strict: isDev, // 只能在开发环境使用，限制state在mutation之外的修改
+    state: defaultState, // 数据
+    getters, // 和computed类似
+    mutations, // 修改state的操作
+    actions, // 异步操作
+    plugins: [
+      (store) => {
         console.log('my vuex plugins')
       }
     ]
@@ -55,24 +55,24 @@ export default ()=>{
     // }
   })
 
-  //vuex的热更替
-  if(module.hot){
+  // vuex的热更替
+  if (module.hot) {
     module.hot.accept([
       './state/state.js',
       './mutations/mutations.js',
       './getters/getters.js',
       './actions/actions.js'
-    ],()=>{
-      const newState=require('./state/state.js').default
-      const newMutations=require('./mutations/mutations.js').default
-      const newGetters=require('./getters/getters.js').default
-      const newActions=require('./actions/actions.js').default
+    ], () => {
+      const newState = require('./state/state.js').default
+      const newMutations = require('./mutations/mutations.js').default
+      const newGetters = require('./getters/getters.js').default
+      const newActions = require('./actions/actions.js').default
 
       store.hotUpdate({
-        state:newState,
-        mutations:newMutations,
-        actions:newActions,
-        getters:newGetters
+        state: newState,
+        mutations: newMutations,
+        actions: newActions,
+        getters: newGetters
       })
     })
   }
