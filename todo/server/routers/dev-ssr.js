@@ -7,6 +7,7 @@ const VueServerRenderer=require('vue-server-renderer')
 const path=require('path')
 const serverConfig=require('../../build/webpack.config.server')
 
+const serverRender=require('./server-render')
 const serverCompiler=webpack(serverConfig)
 const mfs=new MemoryFS()
 serverCompiler.outputFileSystem=mfs
@@ -24,7 +25,7 @@ serverCompiler.watch({},(err,stats)=>{
     'vue-ssr-server-bundle.json'
   )
   bundle=JSON.parse(mfs.readFileSync(bundlePath,'utf-8')) //读取生成的bundle
-
+  console.log('new bundle generated')
 })
 
 const handleSSR=async (ctx)=>{
@@ -35,12 +36,13 @@ const handleSSR=async (ctx)=>{
 
   //client.js
   const clientManifestResp=await axios.get(
-    'http://127.0.0.1/vue-ssr-client-manifest.json'
+    'http://127.0.0.1:8000/public/vue-ssr-client-manifest.json'
   )
   const clientManifest=clientManifestResp.data
 
   const template=fs.readFileSync(
-    path.join(__dirname,'../server.template.ejs')
+    path.join(__dirname,'../server.template.ejs'),
+    'utf-8'
   )
 
   const renderer=VueServerRenderer
@@ -48,4 +50,9 @@ const handleSSR=async (ctx)=>{
       inject:false,
       clientManifest //会自动生成script标签
     })
+    await serverRender(ctx,renderer,template)
 }
+
+const router=new Router()
+router.get('*',handleSSR)
+module.exports=router

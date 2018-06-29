@@ -8,7 +8,6 @@ export default [
   },
   {
     path: '/app',
-
     // path:'/app/:id',
     props: true, // 把id作为props传递到组件中
     // props:{

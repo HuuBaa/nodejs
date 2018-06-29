@@ -55,6 +55,7 @@ if (isDev) {
 			overlay: {
 				errors: true//有错误时回显示在终端上
       },
+      headers:{'Access-Control-Allow-Origin':'*'},
       //解决手动刷新页面无法访问
       historyApiFallback:{
         index:'/public/index.html'
@@ -70,11 +71,12 @@ if (isDev) {
 }else {
   config=merge(baseConfig,{
     entry:{
-      app:path.join(__dirname, '../client/index.js'),// 重定向入口文件
+      app:path.join(__dirname, '../client/client-entry.js'),// 重定向入口文件
       vendor:['vue']// 将支持库例如Vue 源码单独存储
     },
     output:{
-      filename:'[name].[chunkhash:8].js'//设置出口文件的文件名
+      filename:'[name].[chunkhash:8].js',//设置出口文件的文件名
+      publicPath:'/public/'
     },
     module:{
       rules:[

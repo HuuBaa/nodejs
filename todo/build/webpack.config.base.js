@@ -5,11 +5,11 @@ const isDev = process.env.NODE_ENV === 'development'//通过"build":"cross-env N
 
 const config = {
 	target: 'web',
-	entry:path.join(__dirname, '../client/index.js'),//入口文件
+	entry:path.join(__dirname, '../client/client-entry.js'),//入口文件
 	output: {
 		filename: 'bundle.[hash:8].js',//设置出口文件的文件名
-    path: path.join(__dirname, '../dist'),//设置出口文件的路径
-    publicPath:'/public/'
+    path: path.join(__dirname, '../public'),//设置出口文件的路径
+    publicPath:'http://127.0.0.1:8000/public/'
 	},
 	module: {//webpack的模组
 		rules: [//各种文件的引用规则在这里，webpack单独只能理解js文件，其他的文件全部要不同的loader来帮助webpack解析

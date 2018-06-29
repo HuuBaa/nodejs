@@ -5,13 +5,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
-    "build": "cnpm run clean && cnpm run build:client",
+    "build:server":"cross-env NODE_ENV=production webpack --config build/webpack.config.server.js",
+    "build": "cnpm run clean && cnpm run build:client && cnpm run build:server",
     "practice":"cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js",
-    "clean": "rimraf dist",
+    "clean": "rimraf public && rimraf server-build",
     "lint": "eslint --ext .js --ext .jsx --ext .vue client/",
     "lint-fix":"eslint --fix --ext .js --ext .jsx --ext .vue client/",
     "precommit":"cnpm run lint-fix",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js"
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "dev:server":"nodemon server/server.js",
+    "dev":"concurrently \"cnpm run dev:server\" \"cnpm run dev:client\"",
+    "start":"cross-env NODE_ENV=production node server/server.js"
   },
   "author": "",
   "license": "ISC",

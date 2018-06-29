@@ -2,7 +2,7 @@ const path = require('path')//Node.js path 模块提供了一些用于处理文�
 const webpack = require('webpack')//引入webpack
 const merge=require('webpack-merge')
 const ExtractPlugin = require('extract-text-webpack-plugin')
-const VueServerPlugin=require('vue-server-renderer')
+const VueServerPlugin=require('vue-server-renderer/server-plugin')
 
 let config;
 const baseConfig=require('./webpack.config.base.js')
@@ -43,7 +43,8 @@ const baseConfig=require('./webpack.config.base.js')
         'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),
         'process.env.VUE_ENV':'"server"'
       }),
-      new VueServerPlugin() //输出的是json文件，可以设置输出名字
+      //输出的是json文件，可以设置输出名字
+      new VueServerPlugin()
     ]
   })
 

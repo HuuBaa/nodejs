@@ -1,4 +1,5 @@
 import className from '../assets/style/footer.styl'
+//id="{className.footer}"
 
 export default{
   data () {
@@ -8,7 +9,7 @@ export default{
   },
   render () {
     return (
-      <div id={className.footer}>
+      <div id="footer">
         <span>Written by {this.author}</span>
       </div>
     )

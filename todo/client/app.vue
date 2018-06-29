@@ -2,12 +2,14 @@
     <div id="app">
       <div id="cover"></div>
       <Header></Header>
-      <p>{{counter}}<br>{{fullName}}<br></p>
+      <!-- <p>{{counter}}<br>{{fullName}}<br></p>
       <router-link to="/app">app</router-link>
-      <router-link :to="{name:'login'}">login</router-link>
+      <router-link :to="{name:'login'}">login</router-link> -->
       <transition :name="transitionName" mode="out-in">
         <router-view />
       </transition>
+      <!-- <notification content="test notify"></notification> -->
+      <button @click="clicknotify">点我</button>
       <Footer></Footer>
     </div>
 </template>
@@ -25,6 +27,9 @@ import Footer from './layout/footer.jsx'
 // import Todo from './views/todo/todo.vue'
 
 export default {
+  metaInfo:{
+    title: 'Todo App'
+  },
   data () {
     return {
       transitionName: 'fade'
@@ -32,7 +37,13 @@ export default {
   },
   methods: {
     ...mapActions(['updateCountSync']),
-    ...mapMutations(['updateCount'])
+    ...mapMutations(['updateCount']),
+    clicknotify(){
+      this.$notify({
+        content:'test notify1',
+        btn:'关闭我'
+      })
+    }
   },
   computed: {
     // ...mapState(['count']), //vuex同名属性
@@ -92,6 +103,11 @@ export default {
     // setInterval(()=>{
     //   this.$store.commit('updateCount',i++)
     // },1000)
+
+    // this.$notify({
+    //   content:'test notify',
+    //   btn:'close'
+    // })
   },
   components: {
     Header,

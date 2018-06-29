@@ -53,6 +53,9 @@ export default {
     // }
     next()
   },
+  metaInfo:{
+    title: 'The Todo App'
+  },
   data () {
     return {
       todos: [],
