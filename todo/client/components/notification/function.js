@@ -57,7 +57,6 @@ const notify = (options) => {
   instance.$on('close',()=>{
     instance.visible=false
   })
-
   return instance
 }
 
